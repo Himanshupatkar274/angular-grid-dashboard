@@ -1,0 +1,169 @@
+<div class="dash-container">
+    <section class="dash-header">
+        <div class="dash-left-card">
+            <mat-card appearance="outlined">
+                <mat-card-header class="card-header">
+                    <section> <mat-icon>local_library</mat-icon></section>
+                    <mat-card-title>Vender Brekdown</mat-card-title>
+                    <mat-card-subtitle>
+                        <small>keep track on venders and security ratings</small>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+                        [legend]="chartOptions.legend" [fill]="chartOptions.fill"
+                        [plotOptions]="chartOptions.plotOptions" [responsive]="chartOptions.responsive"
+                        [colors]="chartOptions.colors">
+                    </apx-chart>
+
+
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-card-actions align="end">
+                    <button mat-stroked-button>
+                        View full report
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <div class="dash-right-card">
+            <mat-card appearance="outlined">
+                <mat-card-header class="card-header">
+                    <mat-card-title>Verders Moniters</mat-card-title>
+                    <mat-card-subtitle>
+                        <small>You are using 80% of available spots</small>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                    <apx-chart *ngIf="radialChartOptions" [series]="radialChartOptions.series"
+                        [chart]="radialChartOptions.chart" [plotOptions]="radialChartOptions.plotOptions"
+                        [fill]="radialChartOptions.fill" [grid]="radialChartOptions.grid"
+                        [labels]="radialChartOptions.labels" [colors]="chartOptions?.colors">
+                    </apx-chart>
+
+                    <div class="card-content px-2">
+                        <strong>You've almost reached your limit</strong>
+                        <p>
+                            You have used 80% of your available spots. Upgrade plan to moniter more venders.
+                            features.
+                        </p>
+                    </div>
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-card-actions align="end">
+                    <button mat-stroked-button>
+                        <mat-icon>power</mat-icon>
+                        Upgrade plan
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </section>
+
+    <section class="team-data-box">
+        <mat-card appearance="outlined" class="card-header">
+            <mat-card-header>
+                <mat-card-title>Team members</mat-card-title>
+                <span class="badge-btn">
+                    100 users
+                </span>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="select">
+                        <th mat-header-cell *matHeaderCellDef class="w-0">
+                            <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                [checked]="selection?.hasValue() && isAllSelected()"
+                                [indeterminate]="selection?.hasValue() && !isAllSelected()" aria-label="Select all">
+                            </mat-checkbox>
+                        </th>
+                        <td mat-cell *matCellDef="let row" class="w-0">
+                            <mat-checkbox (click)="$event?.stopPropagation()"
+                                (change)="$event ? selection?.toggle(row) : null" [checked]="selection?.isSelected(row)"
+                                aria-label="Select row">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element">
+                            <div class="flex-gap">
+                                <img class="profile-img" [src]="imageUrl" alt="Profile" />
+                                <span>
+                                    {{ element?.name?.first_name }} {{ element?.name?.last_name }}<br />
+                                    {{ element?.name?.handle }}
+                                </span>
+                            </div>
+                        </td>
+                    </ng-container>
+
+
+                    <!-- Status Column -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.status}} </td>
+                    </ng-container>
+
+
+                    <!-- Role Column -->
+                    <ng-container matColumnDef="role">
+                        <th mat-header-cell *matHeaderCellDef> Role </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.role}} </td>
+                    </ng-container>
+
+                    <!-- License Column -->
+                    <ng-container matColumnDef="license_used">
+                        <th mat-header-cell *matHeaderCellDef> License Use </th>
+                        <td mat-cell *matCellDef="let element">
+                            <div class="flex-gap">
+                                <mat-progress-bar class="progress" mode="determinate"
+                                    [value]="element?.license_used"></mat-progress-bar>
+
+                                {{element?.license_used}} %
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <!-- Teams Column -->
+                    <!-- Teams Column -->
+                    <ng-container matColumnDef="teams">
+                        <th mat-header-cell *matHeaderCellDef class="col-name"> Teams </th>
+                        <td mat-cell *matCellDef="let element" class="col-name">
+                            <div class="flex-gap-chip">
+                                <span *ngFor="let team of element?.teams" class="team-chip"
+                                    [ngClass]="getTeamClass(team?.value)">
+                                    {{ team?.value }}
+                                </span>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <!-- Teams Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                        <td mat-cell *matCellDef="let element">
+                            <div class="team-box" *ngFor="let item of element?.action">
+                                <mat-icon class="action-icon" (click)="onAction(item.iconName, element)">{{ item.iconName }}</mat-icon>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+                    </tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[10, 20, 30, 40, 50]" showFirstLastButtons></mat-paginator>
+
+
+            </mat-card-content>
+        </mat-card>
+    </section>
+
+</div>

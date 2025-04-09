@@ -1,0 +1,17 @@
+{
+  "/api": {
+    "target": "https://01.fy25ey01.64mb.io/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/randomImage": {
+    "target": "https://randomuser.me/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/randomImage": "/api"
+    }
+  }
+}

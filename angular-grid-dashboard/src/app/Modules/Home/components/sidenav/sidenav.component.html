@@ -1,0 +1,6 @@
+
+  <mat-nav-list class="mat-sidenav-list menu-scroll">
+    <a class="menu-item-link" mat-list-item  [routerLinkActive]="['sidenav-active-links']" *ngFor="let item of menuItems" [routerLink]="item.route" matTooltip="{{ item.name}}" matTooltipPosition="right" matTooltipClass="custom-tooltip">
+      <mat-icon>{{ item.icon }}</mat-icon>
+    </a>
+  </mat-nav-list>
