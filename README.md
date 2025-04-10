@@ -1,6 +1,6 @@
 # Angular Grid Dashboard
 
-A clean, SCSS-styled dashboard UI built using Angular 18+ featuring a custom grid, local CRUD operations, chart integration, and dynamic API-based rendering.
+A clean, SCSS-styled dashboard UI built using Angular 18+ featuring a custom grid, local CRUD operations, chart integration, and dynamic API-based rendering — all optimized for a **production-level**, **fully responsive**, and **well-structured** Angular application.
 
 ---
 
@@ -12,9 +12,9 @@ A clean, SCSS-styled dashboard UI built using Angular 18+ featuring a custom gri
 
 ## 📌 Project Overview
 
-This Angular application was developed for a technical evaluation. The task was to build a visually appealing and fully functional **dashboard interface** using **only Angular**, without relying on external design libraries.
+This Angular application was developed as part of a technical evaluation. The task was to build a visually appealing and fully functional **dashboard interface** using **only Angular**, without relying heavily on external design libraries.
 
-Design inspiration was taken from a Dribbble reference, ensuring a pixel-perfect UI with an emphasis on layout, styling, and color accuracy.
+Inspired by a Dribbble reference, the UI is **pixel-perfect**, with a strong focus on **layout precision**, **SCSS theming**, and **design fidelity**.
 
 ---
 
@@ -23,8 +23,8 @@ Design inspiration was taken from a Dribbble reference, ensuring a pixel-perfect
 - **Framework:** Angular 18/19
 - **Language:** TypeScript
 - **Styling:** SCSS (No inline styles)
-- **UI Libraries:** Minimal usage of Angular Material
-- **Charts:** [ApexCharts]
+- **UI Libraries:**  Usage of Angular Material
+- **Charts:** ApexCharts
 - **Grid:** Custom-built using HTML, CSS, and TypeScript (no third-party grid components)
 
 ---
@@ -39,19 +39,21 @@ Design inspiration was taken from a Dribbble reference, ensuring a pixel-perfect
 
 ## 🧩 Key Features
 
-- 📊 Fully responsive and user-friendly dashboard
-- 🔄 API integration with visual loading spinner (2s delay managed)
-- ➕ Add, ✏️ Edit, ❌ Delete operations (handled locally)
-- 🎨 SCSS-based theming with no inline CSS or JS hacks
-- ✨ Pixel-perfect design with attention to gradients, fonts, and spacing
-- 🖥️ Optimized for 1920x1080 resolution
+- 📊 **Fully responsive** and user-friendly dashboard UI
+- 🔄 Real-time **API integration** with loading spinners and error handling
+- ➕ Add, ✏️ Edit, ❌ Delete operations (local state)
+- 🎨 **SCSS-based theming** — no inline CSS or JavaScript hacks
+- ✨ **Pixel-perfect design** inspired by modern UI references
+- 🖥️ Optimized for **1920x1080** and mobile viewports
+- 🏗️ **Production-ready codebase** with proper Angular folder structure, lazy loading, and environment-based configuration
+- 📂 **Well-organized architecture** that follows Angular best practices for scalability and maintainability
 
 ---
 
 ## ⚠️ Limitations
 
-- Navbar/Sidebar components are non-functional placeholders
-- No persistent data storage (CRUD operations are local only)
+- Navbar/Sidebar components are static placeholders
+- No backend connection for persistent data storage (CRUD is local)
 
 ---
 
