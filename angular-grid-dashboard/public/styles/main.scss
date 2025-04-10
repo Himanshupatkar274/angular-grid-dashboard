@@ -2,6 +2,7 @@
   --blue1: #b294f1;
   --blue2: #ede8f8;
   --blue3: #7144cf;
+  --grey: #696868d7;
 }
 
 .w-0 {
@@ -107,8 +108,12 @@ footer {
 .sidenav-active-links {
   box-shadow: inset 0px 1px 13px 0px #ddd9d9 !important;
   mat-icon {
-    color: #3f51b5 !important;
+    color: var(--blue3) !important;
   }
+}
+
+mat-icon {
+  color: var(--grey) !important;
 }
 
 .header-section {
@@ -203,13 +208,15 @@ apx-chart {
     font-size: 14px;
   }
 }
-
+.strong-class {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #000 !important;
+}
 .card-content {
   padding: 18px;
   strong {
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    color: #000 !important;
+    @extend .strong-class;
   }
   p {
     margin: 0 !important;
@@ -340,8 +347,23 @@ table {
   padding-top: 10px;
 }
 
-.mat-mdc-dialog-surface  {
+.mat-mdc-dialog-surface {
   padding: 16px !important;
+}
+
+.development-container {
+  display: grid;
+  place-items: center;
+  height: 60vh;
+  padding-top: 5%;
+  .page-header {
+    @extend .strong-class;
+    font-size: 24px !important;
+  }
+  mat-card {
+    box-shadow: 0px 1px 2px #c7c7c7;
+    text-align: center;
+  }
 }
 
 // Media Queries for Responsive Design

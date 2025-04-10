@@ -1,10 +1,11 @@
 export const MenuItems = [
     { name: 'Dashboard', icon: 'dashboard', route: '/dashboard' },
+    { name: 'Home', icon: 'home', route: '/home' },
     { name: 'Profile', icon: 'person', route: '/profile' },
-    { name: 'My Points', icon: 'layers', route: '/myPoints' },
-    { name: 'Redeem Point', icon: 'redeem', route: '/myRedeemption' },
-    { name: 'Inbox', icon: 'chat', route: '/inbox' },
-    { name: 'Refer', icon: 'person_add', route: '/refer' },
-    { name: 'Leaderboard', icon: 'share', route: '/leaderboard' },
-    { name: 'Terms & Conditions', icon: 'gavel', route: '/terms' }
+    { name: 'My Growth', icon: 'signal_cellular_alt', route: '/growth' },
+    { name: 'Security', icon: 'layers', route: '/security' },
+    { name: 'Achivement', icon: 'assignment_turned_in', route: '/achive' },
+    { name: 'Explore', icon: 'explore', route: '/explore' },
+    { name: 'Leaderboard', icon: 'donut_small', route: '/leaderboard' },
+    { name: 'Community', icon: 'people_outline', route: '/community' }
 ];

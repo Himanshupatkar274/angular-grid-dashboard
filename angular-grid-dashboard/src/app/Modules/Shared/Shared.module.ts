@@ -4,6 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { UnderDevelopmentComponent } from "./components/under-development/under-development.component";
 
 const SHARED_MODULE = [
     CommonModule,
@@ -11,6 +12,7 @@ const SHARED_MODULE = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    UnderDevelopmentComponent
   ]
 
 @NgModule({
