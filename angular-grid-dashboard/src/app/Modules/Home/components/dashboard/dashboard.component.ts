@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  // This method initializes the dashboard by fetching user profile data,
   initializeDashboard(): void {
     this.getRandomUserProfile();
     this.setChartOptions();
@@ -47,6 +48,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.loadGridStructure();
   }
 
+  // This method fetches the grid data from the service and sets it to the data source
   loadGridStructure(): void {
     this.baseService.getGridData().subscribe((data: any) => {
       const columns = data.grid_columns.concat({
@@ -72,6 +74,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
   }
 
+  // This method sets the chart options for the bar chart
+  // and the radial chart
   setChartOptions(): void {
     this.chartOptions = {
       series: [
@@ -137,6 +141,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     };
   }
 
+
   isAllSelected(): boolean {
     return this.selection.selected.length === this.dataSource.data.length;
   }
@@ -150,12 +155,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       : `${this.selection.isSelected(row) ? 'deselect' : 'select'} row`;
   }
 
+  // This method fetches a random user profile image from the service
   getRandomUserProfile(): void {
     this.baseService.getRandomImages().subscribe((data: any) => {
       this.imageUrl = data?.results?.[0]?.picture?.large || '';
     });
   }
 
+  // This method returns the class name based on the team value
   getTeamClass(value: string): string {
     switch (value?.toLowerCase()) {
       case 'design': return 'design';
@@ -165,6 +172,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // This method returns the class name based on the status value
   onAction(action: string, row: any): void {
     console.log(`Action: ${action}`, row);
     if (action === 'delete') {
@@ -174,6 +182,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // This method opens the edit profile modal dialog
   openEditProfileModal() {
     const dialogRef = this.dialog.open(EditProfileComponent, {
       width: '600px',

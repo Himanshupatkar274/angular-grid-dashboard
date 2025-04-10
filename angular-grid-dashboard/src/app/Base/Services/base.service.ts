@@ -13,6 +13,7 @@ export class BaseService {
         return this.Http.get(endPoints.gridStructure);
     }
 
+    // This method fetches random user profile Images
     getRandomImages() {
         return this.Http.get(endPoints.imageUrl);
     }
